@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Team = () => {
+  const { t } = useLanguage();
   const { data: teamMembers } = useQuery({
     queryKey: ["team-members"],
     queryFn: async () => {
@@ -25,7 +27,7 @@ const Team = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Meet the <span className="text-gradient">Dream Team</span>
+              {t("team_title")} <span className="text-gradient">{t("team_dream")}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Expert engineers from top tech companies, united by passion for exceptional web development

@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -37,13 +40,10 @@ const Hero = () => {
 
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tight">
-              <span className="text-gradient">Enterprise-Quality</span>
-              <br />
-              Websites in 1-3 Days
+              {t("hero_title")} <span className="text-gradient">{t("hero_days")}</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              From landing pages to complex web applications, we deliver exceptional solutions 
-              with unprecedented speed. Premium development from expert engineers worldwide.
+              {t("hero_subtitle")}
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const Hero = () => {
               className="gradient-primary text-lg px-8 py-6 group glow-primary hover:scale-105 transition-all"
               onClick={scrollToContact}
             >
-              Start Your Project
+              {t("cta_start")}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -62,7 +62,7 @@ const Hero = () => {
               className="text-lg px-8 py-6 border-2 hover:bg-primary/10 hover:border-primary transition-all"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
-              View Portfolio
+              {t("cta_portfolio")}
             </Button>
           </div>
 
