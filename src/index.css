@@ -7,7 +7,9 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
+  /* Purple Theme (Default - Electric Purple/Cyan) */
+  :root,
+  .theme-purple {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -59,6 +61,116 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 20%;
     --sidebar-ring: 250 80% 70%;
+  }
+
+  /* Dark Theme (Modern Dark with Blue/Teal accents) */
+  .theme-dark {
+    --background: 220 26% 14%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 26% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 26% 18%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 80% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 19% 60%;
+
+    --accent: 173 80% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 22%;
+    --input: 215 28% 22%;
+    --ring: 199 89% 48%;
+
+    --radius: 1rem;
+
+    /* Modern gradient colors - Blue to Teal */
+    --gradient-from: 199 89% 48%;
+    --gradient-via: 186 85% 44%;
+    --gradient-to: 173 80% 40%;
+
+    /* Hero gradient - Ocean Blue */
+    --hero-gradient-from: 199 89% 48%;
+    --hero-gradient-to: 173 80% 40%;
+
+    /* Accent gradient - Teal glow */
+    --accent-glow-from: 173 80% 40%;
+    --accent-glow-to: 173 90% 50%;
+
+    --sidebar-background: 220 26% 14%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 28% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 28% 22%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  /* Light Theme (Clean White with vibrant accents) */
+  .theme-light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 250 80% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 188 94% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 40%;
+
+    --accent: 188 94% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 250 80% 60%;
+
+    --radius: 1rem;
+
+    /* Modern gradient colors - Purple to Blue (vibrant) */
+    --gradient-from: 250 80% 60%;
+    --gradient-via: 260 70% 55%;
+    --gradient-to: 270 60% 50%;
+
+    /* Hero gradient - Vibrant Purple */
+    --hero-gradient-from: 250 80% 60%;
+    --hero-gradient-to: 270 60% 50%;
+
+    /* Accent gradient - Bright Cyan */
+    --accent-glow-from: 188 94% 50%;
+    --accent-glow-to: 188 100% 60%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 250 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 250 80% 60%;
   }
 }
 

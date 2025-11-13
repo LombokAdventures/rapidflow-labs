@@ -7,11 +7,13 @@ import Process from "@/components/Process";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
+      <ThemeSwitcher />
       <Navbar />
       <Hero />
       <Team />
