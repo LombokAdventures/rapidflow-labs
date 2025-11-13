@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Eye } from "lucide-react";
 import { useState } from "react";
@@ -12,6 +13,7 @@ import {
 import * as Icons from "lucide-react";
 
 const ServiceTemplates = () => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTemplate, setSelectedTemplate] = useState<any>(null);
 
@@ -62,7 +64,7 @@ const ServiceTemplates = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Our <span className="text-gradient">Services</span>
+            {t("services_title")} <span className="text-gradient">{t("services_word")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             From simple landing pages to complex applications, explore our solutions

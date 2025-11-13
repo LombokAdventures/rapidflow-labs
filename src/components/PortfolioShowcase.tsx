@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Eye, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 const PortfolioShowcase = () => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,7 +56,7 @@ const PortfolioShowcase = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Our <span className="text-gradient">Portfolio</span>
+            {t("portfolio_title")} <span className="text-gradient">{t("portfolio_build")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Real projects delivered to real clients. Click to explore interactive demos.
