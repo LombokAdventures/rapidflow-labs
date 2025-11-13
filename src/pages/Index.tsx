@@ -6,12 +6,10 @@ import PortfolioShowcase from "@/components/PortfolioShowcase";
 import Process from "@/components/Process";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <LanguageSwitcher />
       <Navbar />
       <Hero />
       <Team />
