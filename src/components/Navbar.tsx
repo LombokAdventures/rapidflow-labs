@@ -27,8 +27,8 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors">
-              About
+            <button onClick={() => scrollToSection("team")} className="text-foreground hover:text-primary transition-colors">
+              Team
             </button>
             <button onClick={() => scrollToSection("services")} className="text-foreground hover:text-primary transition-colors">
               Services
@@ -36,14 +36,14 @@ const Navbar = () => {
             <button onClick={() => scrollToSection("portfolio")} className="text-foreground hover:text-primary transition-colors">
               Portfolio
             </button>
+            <button onClick={() => scrollToSection("process")} className="text-foreground hover:text-primary transition-colors">
+              Process
+            </button>
             <button onClick={() => scrollToSection("reviews")} className="text-foreground hover:text-primary transition-colors">
               Reviews
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors">
-              Contact
-            </button>
-            <Button onClick={() => scrollToSection("contact")} className="gradient-primary">
-              Start Project
+            <Button onClick={() => scrollToSection("contact")} className="gradient-primary glow-primary">
+              Get Started
             </Button>
           </div>
 
@@ -56,8 +56,8 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4">
-            <button onClick={() => scrollToSection("about")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
-              About
+            <button onClick={() => scrollToSection("team")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
+              Team
             </button>
             <button onClick={() => scrollToSection("services")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
               Services
@@ -65,14 +65,14 @@ const Navbar = () => {
             <button onClick={() => scrollToSection("portfolio")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
               Portfolio
             </button>
+            <button onClick={() => scrollToSection("process")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
+              Process
+            </button>
             <button onClick={() => scrollToSection("reviews")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
               Reviews
             </button>
-            <button onClick={() => scrollToSection("contact")} className="block w-full text-left px-4 py-2 hover:bg-muted rounded-lg">
-              Contact
-            </button>
-            <Button onClick={() => scrollToSection("contact")} className="w-full gradient-primary">
-              Start Project
+            <Button onClick={() => scrollToSection("contact")} className="w-full gradient-primary glow-primary">
+              Get Started
             </Button>
           </div>
         )}

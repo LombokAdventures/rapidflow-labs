@@ -1,0 +1,233 @@
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, Eye, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
+
+const PortfolioShowcase = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { data: projects } = useQuery({
+    queryKey: ["portfolio-projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("portfolio_projects")
+        .select("*")
+        .eq("is_published", true)
+        .order("display_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const categories = ["All", ...(projects ? [...new Set(projects.map(p => p.category))] : [])];
+  const filteredProjects = selectedCategory === "All" 
+    ? projects 
+    : projects?.filter(p => p.category === selectedCategory);
+
+  const openProject = (project: any) => {
+    setSelectedProject(project);
+    const index = filteredProjects?.findIndex(p => p.id === project.id) || 0;
+    setCurrentIndex(index);
+  };
+
+  const navigateProject = (direction: 'prev' | 'next') => {
+    if (!filteredProjects) return;
+    let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+    if (newIndex < 0) newIndex = filteredProjects.length - 1;
+    if (newIndex >= filteredProjects.length) newIndex = 0;
+    setCurrentIndex(newIndex);
+    setSelectedProject(filteredProjects[newIndex]);
+  };
+
+  return (
+    <section id="portfolio" className="py-32 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            Our <span className="text-gradient">Portfolio</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Real projects delivered to real clients. Click to explore interactive demos.
+          </p>
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              className={`rounded-full px-6 py-3 transition-all ${
+                selectedCategory === category 
+                  ? "gradient-primary glow-primary" 
+                  : "hover:border-primary hover:text-primary"
+              }`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {filteredProjects?.map((project) => (
+            <div
+              key={project.id}
+              className="glass-card-hover rounded-3xl overflow-hidden group"
+            >
+              <div className="relative aspect-video overflow-hidden">
+                <img
+                  src={project.thumbnail_url}
+                  alt={project.project_name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-3">
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    className="glow-accent"
+                    onClick={() => openProject(project)}
+                  >
+                    <Eye className="w-4 h-4 mr-2" />
+                    View Demo
+                  </Button>
+                  {project.demo_url !== '#' && (
+                    <Button
+                      size="sm"
+                      className="gradient-primary glow-primary"
+                      onClick={() => window.open(project.demo_url, "_blank")}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Open
+                    </Button>
+                  )}
+                </div>
+              </div>
+              <div className="p-6 space-y-3">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-xl font-bold flex-1">{project.project_name}</h3>
+                  <span className="text-xs px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 whitespace-nowrap">
+                    {project.category}
+                  </span>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="px-2 py-1 rounded bg-accent/20 text-accent">
+                    ⚡ {project.delivery_time}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Full-Screen Project Viewer */}
+        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+          <DialogContent className="max-w-[95vw] h-[95vh] p-0 gap-0">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-border glass-card">
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold mb-1">{selectedProject?.project_name}</h2>
+                <p className="text-sm text-muted-foreground">{selectedProject?.category} • {selectedProject?.delivery_time}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => navigateProject('prev')}
+                  className="rounded-full"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => navigateProject('next')}
+                  className="rounded-full"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+                {selectedProject?.demo_url !== '#' && (
+                  <Button
+                    size="sm"
+                    className="gradient-primary glow-primary"
+                    onClick={() => window.open(selectedProject?.demo_url, "_blank")}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Open Full Site
+                  </Button>
+                )}
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setSelectedProject(null)}
+                  className="rounded-full"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-1 overflow-hidden">
+              {/* Demo Viewer */}
+              <div className="flex-1 p-6 overflow-hidden">
+                <iframe
+                  src={selectedProject?.demo_url}
+                  className="w-full h-full rounded-2xl border border-border shadow-2xl"
+                  title={selectedProject?.project_name}
+                />
+              </div>
+
+              {/* Sidebar */}
+              <div className="w-80 p-6 border-l border-border glass-card overflow-y-auto">
+                <h3 className="text-lg font-semibold mb-4">Project Details</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {selectedProject?.description}
+                </p>
+                
+                {selectedProject?.features && selectedProject.features.length > 0 && (
+                  <>
+                    <h4 className="font-semibold mb-3">Key Features</h4>
+                    <ul className="space-y-2 mb-6">
+                      {selectedProject.features.map((feature: string, index: number) => (
+                        <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-primary mt-1">✓</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Category:</span>
+                    <span className="font-medium">{selectedProject?.category}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Delivery:</span>
+                    <span className="font-medium">{selectedProject?.delivery_time}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+    </section>
+  );
+};
+
+export default PortfolioShowcase;
