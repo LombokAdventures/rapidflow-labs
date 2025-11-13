@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { LogOut, MessageSquare, Star, FolderKanban, Settings, Briefcase } from "lucide-react";
+import { LogOut, MessageSquare, Star, FolderKanban, Settings, Briefcase, Image, Layout, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const AdminDashboard = () => {
@@ -174,6 +174,60 @@ const AdminDashboard = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Manage service offerings
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/admin/portfolio">
+            <Card className="hover:scale-105 transition-transform cursor-pointer">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center">
+                    <Image className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle>Portfolio</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Manage portfolio projects
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/admin/templates">
+            <Card className="hover:scale-105 transition-transform cursor-pointer">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center">
+                    <Layout className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle>Templates</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Manage service templates
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/admin/team">
+            <Card className="hover:scale-105 transition-transform cursor-pointer">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle>Team Members</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Manage team members
                 </p>
               </CardContent>
             </Card>
