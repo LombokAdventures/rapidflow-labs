@@ -14,7 +14,6 @@ import * as Icons from "lucide-react";
 
 const ServiceTemplates = () => {
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTemplate, setSelectedTemplate] = useState<any>(null);
 
   const { data: services } = useQuery({
@@ -42,11 +41,6 @@ const ServiceTemplates = () => {
       return data;
     },
   });
-
-  const categories = ["All", ...(services?.map(s => s.service_name) || [])];
-  const filteredTemplates = selectedCategory === "All" 
-    ? templates 
-    : templates?.filter(t => t.category === selectedCategory);
 
   const scrollToContact = (serviceName: string) => {
     const element = document.getElementById("contact");
@@ -101,34 +95,16 @@ const ServiceTemplates = () => {
         <div className="mt-20">
           <div className="text-center mb-12">
             <h3 className="text-4xl font-bold mb-4">
-              See What We <span className="text-gradient">Actually Build</span>
+              {t("portfolio_title")} <span className="text-gradient">{t("portfolio_build")}</span>
             </h3>
             <p className="text-lg text-muted-foreground">
-              Interactive demos of real projects we've delivered
+              {t("portfolio_subtitle")}
             </p>
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={`rounded-full px-6 py-3 transition-all ${
-                  selectedCategory === category 
-                    ? "gradient-primary glow-primary" 
-                    : "hover:border-primary hover:text-primary"
-                }`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </Button>
-            ))}
           </div>
 
           {/* Templates Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {filteredTemplates?.map((template) => (
+            {templates?.map((template) => (
               <div
                 key={template.id}
                 className="glass-card-hover rounded-3xl overflow-hidden group cursor-pointer"
@@ -147,7 +123,7 @@ const ServiceTemplates = () => {
                       onClick={() => setSelectedTemplate(template)}
                     >
                       <Eye className="w-4 h-4 mr-2" />
-                      View Demo
+                      {t("view_demo")}
                     </Button>
                     <Button
                       size="sm"
@@ -155,7 +131,7 @@ const ServiceTemplates = () => {
                       onClick={() => window.open(template.demo_url, "_blank")}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Open
+                      {t("open")}
                     </Button>
                   </div>
                 </div>
