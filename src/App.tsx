@@ -14,6 +14,7 @@ import AdminSettings from "./pages/AdminSettings";
 import AdminTeam from "./pages/AdminTeam";
 import AdminPortfolio from "./pages/AdminPortfolio";
 import AdminTemplates from "./pages/AdminTemplates";
+import AdminCompanyInfo from "./pages/AdminCompanyInfo";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/secret/admin/team" element={<AdminTeam />} />
           <Route path="/secret/admin/portfolio" element={<AdminPortfolio />} />
           <Route path="/secret/admin/templates" element={<AdminTemplates />} />
+          <Route path="/secret/admin/company" element={<AdminCompanyInfo />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Pencil, Trash2, Upload, X } from "lucide-react";
+import { Plus, Pencil, Trash2, Upload, X, ArrowLeft } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -23,12 +24,22 @@ import {
 } from "@/components/ui/table";
 
 const AdminTeam = () => {
+  const navigate = useNavigate();
   const [editingMember, setEditingMember] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) navigate("/secret/admin");
+  };
 
   const { data: teamMembers } = useQuery({
     queryKey: ["admin-team-members"],
@@ -116,9 +127,27 @@ const AdminTeam = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold">Team Members</h2>
+    <div className="min-h-screen bg-muted/30">
+      <nav className="border-b glass-card">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center gap-4">
+            <Link to="/secret/admin/dashboard">
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back
+              </Button>
+            </Link>
+            <h1 className="text-2xl font-bold">
+              Manage <span className="text-gradient">Team</span>
+            </h1>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl font-bold">Team Members</h2>
         <Button onClick={() => openEditDialog()} className="gradient-primary">
           <Plus className="w-4 h-4 mr-2" />
           Add Member
@@ -266,6 +295,8 @@ const AdminTeam = () => {
           </form>
         </DialogContent>
       </Dialog>
+        </div>
+      </div>
     </div>
   );
 };
