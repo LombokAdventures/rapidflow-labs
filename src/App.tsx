@@ -8,7 +8,6 @@ import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminInquiries from "./pages/AdminInquiries";
-import AdminDemos from "./pages/AdminDemos";
 import AdminReviews from "./pages/AdminReviews";
 import AdminServices from "./pages/AdminServices";
 import AdminSettings from "./pages/AdminSettings";
@@ -31,7 +30,6 @@ const App = () => (
           <Route path="/secret/admin" element={<AdminLogin />} />
           <Route path="/secret/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/secret/admin/inquiries" element={<AdminInquiries />} />
-          <Route path="/secret/admin/demos" element={<AdminDemos />} />
           <Route path="/secret/admin/reviews" element={<AdminReviews />} />
           <Route path="/secret/admin/services" element={<AdminServices />} />
           <Route path="/secret/admin/settings" element={<AdminSettings />} />

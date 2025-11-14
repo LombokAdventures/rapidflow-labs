@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { LogOut, MessageSquare, Star, FolderKanban, Settings, Briefcase, Image, Layout, Users } from "lucide-react";
+import { LogOut, MessageSquare, Star, FolderKanban, Settings, Briefcase, Layout, Users, ImageIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const AdminDashboard = () => {
@@ -52,16 +52,6 @@ const AdminDashboard = () => {
     },
   });
 
-  const { data: demosCount } = useQuery({
-    queryKey: ["demos-count"],
-    queryFn: async () => {
-      const { count } = await supabase
-        .from("demos")
-        .select("*", { count: "exact", head: true });
-      return count || 0;
-    },
-  });
-
   return (
     <div className="min-h-screen bg-muted/30">
       <nav className="border-b glass-card">
@@ -77,7 +67,7 @@ const AdminDashboard = () => {
       </nav>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
           <Card>
             <CardHeader>
               <CardTitle className="text-sm">Total Inquiries</CardTitle>
@@ -93,15 +83,6 @@ const AdminDashboard = () => {
             </CardHeader>
             <CardContent>
               <p className="text-4xl font-bold text-secondary">{pendingReviewsCount}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm">Total Demos</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold text-primary">{demosCount}</p>
             </CardContent>
           </Card>
         </div>
@@ -184,7 +165,7 @@ const AdminDashboard = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center">
-                    <Image className="w-6 h-6 text-white" />
+                    <ImageIcon className="w-6 h-6 text-white" />
                   </div>
                   <CardTitle>Portfolio</CardTitle>
                 </div>

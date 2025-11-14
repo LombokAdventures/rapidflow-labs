@@ -49,6 +49,9 @@ const PortfolioShowcase = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            {t("portfolio_title")} <span className="text-gradient">{t("portfolio_build")}</span>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t("portfolio_subtitle")}
           </p>
@@ -110,10 +113,10 @@ const PortfolioShowcase = () => {
 
         {/* Full-Screen Project Viewer */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-[95vw] h-[95vh] p-0 gap-0">
-            <div className="flex h-full overflow-hidden">
+          <DialogContent className="max-w-[95vw] max-h-[95vh] h-[95vh] p-0 gap-0 [&>button]:hidden">
+            <div className="flex flex-col md:flex-row h-full overflow-hidden">
               {/* Demo Viewer - Full Height */}
-              <div className="flex-1 overflow-hidden bg-muted/30">
+              <div className="flex-1 overflow-hidden bg-muted/30 h-64 md:h-full">
                 <iframe
                   src={selectedProject?.demo_url}
                   className="w-full h-full border-0"
@@ -122,7 +125,7 @@ const PortfolioShowcase = () => {
               </div>
 
               {/* Sidebar */}
-              <div className="w-80 p-6 border-l border-border glass-card overflow-y-auto flex flex-col">
+              <div className="w-full md:w-80 p-6 border-t md:border-t-0 md:border-l border-border glass-card overflow-y-auto flex flex-col">
                 {/* Close Button */}
                 <div className="flex justify-end mb-4">
                   <Button
