@@ -55,9 +55,6 @@ const PortfolioShowcase = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            {t("portfolio_title")} <span className="text-gradient">{t("portfolio_build")}</span>
-          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Real projects delivered to real clients. Click to explore interactive demos.
           </p>
@@ -89,10 +86,11 @@ const PortfolioShowcase = () => {
               className="glass-card-hover rounded-3xl overflow-hidden group"
             >
               <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.thumbnail_url}
-                  alt={project.project_name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                <iframe
+                  src={project.demo_url}
+                  title={project.project_name}
+                  className="w-full h-full border-0 pointer-events-none"
+                  sandbox="allow-scripts allow-same-origin"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-3">
                   <Button
@@ -137,90 +135,102 @@ const PortfolioShowcase = () => {
         {/* Full-Screen Project Viewer */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
           <DialogContent className="max-w-[95vw] h-[95vh] p-0 gap-0">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border glass-card">
-              <div className="flex-1">
-                <h2 className="text-2xl font-bold mb-1">{selectedProject?.project_name}</h2>
-                <p className="text-sm text-muted-foreground">{selectedProject?.category} • {selectedProject?.delivery_time}</p>
+            <div className="flex h-full overflow-hidden">
+              {/* Demo Viewer - Full Height */}
+              <div className="flex-1 overflow-hidden bg-muted/30">
+                <iframe
+                  src={selectedProject?.demo_url}
+                  className="w-full h-full border-0"
+                  title={selectedProject?.project_name}
+                />
               </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => navigateProject('prev')}
-                  className="rounded-full"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => navigateProject('next')}
-                  className="rounded-full"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
+
+              {/* Sidebar */}
+              <div className="w-80 p-6 border-l border-border glass-card overflow-y-auto flex flex-col">
+                {/* Close Button */}
+                <div className="flex justify-end mb-4">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => setSelectedProject(null)}
+                    className="rounded-full"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+
+                {/* Project Info */}
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold mb-2">{selectedProject?.project_name}</h2>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {selectedProject?.category} • {selectedProject?.delivery_time}
+                  </p>
+                </div>
+
+                {/* Navigation Buttons */}
+                <div className="flex gap-2 mb-6">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => navigateProject('prev')}
+                    className="flex-1 rounded-full"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-1" />
+                    Previous
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => navigateProject('next')}
+                    className="flex-1 rounded-full"
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </div>
+
+                {/* Open Full Site Button */}
                 {selectedProject?.demo_url !== '#' && (
                   <Button
                     size="sm"
-                    className="gradient-primary glow-primary"
+                    className="gradient-primary glow-primary mb-6 w-full"
                     onClick={() => window.open(selectedProject?.demo_url, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Open Full Site
                   </Button>
                 )}
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => setSelectedProject(null)}
-                  className="rounded-full"
-                >
-                  <X className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
 
-            {/* Content */}
-            <div className="flex flex-1 overflow-hidden">
-              {/* Demo Viewer */}
-              <div className="flex-1 p-6 overflow-hidden">
-                <iframe
-                  src={selectedProject?.demo_url}
-                  className="w-full h-full rounded-2xl border border-border shadow-2xl"
-                  title={selectedProject?.project_name}
-                />
-              </div>
+                {/* Project Details */}
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-lg font-semibold mb-4">Project Details</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {selectedProject?.description}
+                  </p>
 
-              {/* Sidebar */}
-              <div className="w-80 p-6 border-l border-border glass-card overflow-y-auto">
-                <h3 className="text-lg font-semibold mb-4">Project Details</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {selectedProject?.description}
-                </p>
-                
-                {selectedProject?.features && selectedProject.features.length > 0 && (
-                  <>
-                    <h4 className="font-semibold mb-3">Key Features</h4>
-                    <ul className="space-y-2 mb-6">
-                      {selectedProject.features.map((feature: string, index: number) => (
-                        <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <span className="text-primary mt-1">✓</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
+                  {selectedProject?.features && selectedProject.features.length > 0 && (
+                    <>
+                      <h4 className="font-semibold mb-3">Key Features</h4>
+                      <ul className="space-y-2 mb-6">
+                        {selectedProject.features.map((feature: string, index: number) => (
+                          <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="text-primary mt-1">✓</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
 
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Category:</span>
-                    <span className="font-medium">{selectedProject?.category}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Delivery:</span>
-                    <span className="font-medium">{selectedProject?.delivery_time}</span>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Category:</span>
+                      <span className="font-medium">{selectedProject?.category}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Delivery:</span>
+                      <span className="font-medium">{selectedProject?.delivery_time}</span>
+                    </div>
                   </div>
                 </div>
               </div>
