@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2, ArrowLeft } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Switch } from "@/components/ui/switch";
 
 const AdminTemplates = () => {
+  const navigate = useNavigate();
   const [editingTemplate, setEditingTemplate] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) navigate("/secret/admin");
+  };
 
   const { data: templates } = useQuery({
     queryKey: ["admin-templates"],
@@ -72,16 +83,34 @@ const AdminTemplates = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold">Service Templates</h2>
-        <Button onClick={() => openEditDialog()} className="gradient-primary">
-          <Plus className="w-4 h-4 mr-2" />
-          Add Template
-        </Button>
-      </div>
+    <div className="min-h-screen bg-muted/30">
+      <nav className="border-b glass-card">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center gap-4">
+            <Link to="/secret/admin/dashboard">
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back
+              </Button>
+            </Link>
+            <h1 className="text-2xl font-bold">
+              Manage <span className="text-gradient">Templates</span>
+            </h1>
+          </div>
+        </div>
+      </nav>
 
-      <Table>
+      <div className="container mx-auto px-4 py-8">
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl font-bold">Service Templates</h2>
+            <Button onClick={() => openEditDialog()} className="gradient-primary">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Template
+            </Button>
+          </div>
+
+          <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Preview</TableHead>
@@ -113,9 +142,9 @@ const AdminTemplates = () => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
+        </Table>
 
-      <Dialog open={!!editingTemplate} onOpenChange={() => setEditingTemplate(null)}>
+        <Dialog open={!!editingTemplate} onOpenChange={() => setEditingTemplate(null)}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>{editingTemplate?.id ? "Edit" : "Add"} Service Template</DialogTitle>
@@ -197,6 +226,8 @@ const AdminTemplates = () => {
           </form>
         </DialogContent>
       </Dialog>
+        </div>
+      </div>
     </div>
   );
 };
