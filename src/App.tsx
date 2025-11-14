@@ -28,29 +28,16 @@ const App = () => (
           <Route path="/" element={<Index />} />
 
           {/* Admin routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/inquiries" element={<AdminInquiries />} />
-          <Route path="/admin/demos" element={<AdminDemos />} />
-          <Route path="/admin/reviews" element={<AdminReviews />} />
-          <Route path="/admin/services" element={<AdminServices />} />
-          <Route path="/admin/settings" element={<AdminSettings />} />
-          <Route path="/admin/team" element={<AdminTeam />} />
-          <Route path="/admin/portfolio" element={<AdminPortfolio />} />
-          <Route path="/admin/templates" element={<AdminTemplates />} />
-
-          {/* Legacy logic/admin routes for backward compatibility */}
-          <Route path="/logic/admin" element={<AdminLogin />} />
-          <Route path="/logic/admin/login" element={<AdminLogin />} />
-          <Route path="/logic/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/logic/admin/inquiries" element={<AdminInquiries />} />
-          <Route path="/logic/admin/demos" element={<AdminDemos />} />
-          <Route path="/logic/admin/reviews" element={<AdminReviews />} />
-          <Route path="/logic/admin/services" element={<AdminServices />} />
-          <Route path="/logic/admin/settings" element={<AdminSettings />} />
-          <Route path="/logic/admin/team" element={<AdminTeam />} />
-          <Route path="/logic/admin/portfolio" element={<AdminPortfolio />} />
-          <Route path="/logic/admin/templates" element={<AdminTemplates />} />
+          <Route path="/secret/admin" element={<AdminLogin />} />
+          <Route path="/secret/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/secret/admin/inquiries" element={<AdminInquiries />} />
+          <Route path="/secret/admin/demos" element={<AdminDemos />} />
+          <Route path="/secret/admin/reviews" element={<AdminReviews />} />
+          <Route path="/secret/admin/services" element={<AdminServices />} />
+          <Route path="/secret/admin/settings" element={<AdminSettings />} />
+          <Route path="/secret/admin/team" element={<AdminTeam />} />
+          <Route path="/secret/admin/portfolio" element={<AdminPortfolio />} />
+          <Route path="/secret/admin/templates" element={<AdminTemplates />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

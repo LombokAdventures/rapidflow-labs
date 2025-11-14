@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const checkAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
-      navigate("/admin/login");
+      navigate("/secret/admin");
     }
   };
 
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
       title: "Logged Out",
       description: "You have been logged out successfully.",
     });
-    navigate("/admin/login");
+    navigate("/secret/admin");
   };
 
   const { data: inquiriesCount } = useQuery({
@@ -107,7 +107,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Link to="/admin/inquiries">
+          <Link to="/secret/admin/inquiries">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/demos">
+          <Link to="/secret/admin/demos">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -143,7 +143,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/reviews">
+          <Link to="/secret/admin/reviews">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -161,7 +161,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/services">
+          <Link to="/secret/admin/services">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -179,7 +179,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/portfolio">
+          <Link to="/secret/admin/portfolio">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -197,7 +197,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/templates">
+          <Link to="/secret/admin/templates">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/team">
+          <Link to="/secret/admin/team">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -233,7 +233,7 @@ const AdminDashboard = () => {
             </Card>
           </Link>
 
-          <Link to="/admin/settings">
+          <Link to="/secret/admin/settings">
             <Card className="hover:scale-105 transition-transform cursor-pointer">
               <CardHeader>
                 <div className="flex items-center gap-3">

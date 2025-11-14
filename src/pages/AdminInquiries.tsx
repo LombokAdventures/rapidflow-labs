@@ -44,7 +44,7 @@ const AdminInquiries = () => {
   const checkAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
-      navigate("/admin/login");
+      navigate("/secret/admin/login");
     }
   };
 
@@ -99,7 +99,7 @@ const AdminInquiries = () => {
       <nav className="border-b glass-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link to="/admin/dashboard">
+            <Link to="/secret/admin/dashboard">
               <Button variant="ghost" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back

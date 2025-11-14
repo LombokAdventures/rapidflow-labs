@@ -38,7 +38,7 @@ const AdminLogin = () => {
           title: "Login Successful",
           description: "Welcome back!",
         });
-        navigate("/admin/dashboard");
+        navigate("/secret/admin/dashboard");
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
