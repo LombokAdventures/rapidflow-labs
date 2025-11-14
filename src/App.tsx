@@ -24,7 +24,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/rapidflow-labs">
         <Routes>
           <Route path="/" element={<Index />} />
 
