@@ -11,7 +11,6 @@ import {
 
 const PortfolioShowcase = () => {
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -28,24 +27,19 @@ const PortfolioShowcase = () => {
     },
   });
 
-  const categories = ["All", ...(projects ? [...new Set(projects.map(p => p.category))] : [])];
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
-    : projects?.filter(p => p.category === selectedCategory);
-
   const openProject = (project: any) => {
     setSelectedProject(project);
-    const index = filteredProjects?.findIndex(p => p.id === project.id) || 0;
+    const index = projects?.findIndex(p => p.id === project.id) || 0;
     setCurrentIndex(index);
   };
 
   const navigateProject = (direction: 'prev' | 'next') => {
-    if (!filteredProjects) return;
+    if (!projects) return;
     let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
-    if (newIndex < 0) newIndex = filteredProjects.length - 1;
-    if (newIndex >= filteredProjects.length) newIndex = 0;
+    if (newIndex < 0) newIndex = projects.length - 1;
+    if (newIndex >= projects.length) newIndex = 0;
     setCurrentIndex(newIndex);
-    setSelectedProject(filteredProjects[newIndex]);
+    setSelectedProject(projects[newIndex]);
   };
 
   return (
@@ -56,31 +50,13 @@ const PortfolioShowcase = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Real projects delivered to real clients. Click to explore interactive demos.
+            {t("portfolio_subtitle")}
           </p>
-        </div>
-
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              className={`rounded-full px-6 py-3 transition-all ${
-                selectedCategory === category 
-                  ? "gradient-primary glow-primary" 
-                  : "hover:border-primary hover:text-primary"
-              }`}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </Button>
-          ))}
         </div>
 
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {filteredProjects?.map((project) => (
+          {projects?.map((project) => (
             <div
               key={project.id}
               className="glass-card-hover rounded-3xl overflow-hidden group"
@@ -100,7 +76,7 @@ const PortfolioShowcase = () => {
                     onClick={() => openProject(project)}
                   >
                     <Eye className="w-4 h-4 mr-2" />
-                    View Demo
+                    {t("view_demo")}
                   </Button>
                   {project.demo_url !== '#' && (
                     <Button
@@ -109,7 +85,7 @@ const PortfolioShowcase = () => {
                       onClick={() => window.open(project.demo_url, "_blank")}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Open
+                      {t("open")}
                     </Button>
                   )}
                 </div>
@@ -176,7 +152,7 @@ const PortfolioShowcase = () => {
                     className="flex-1 rounded-full"
                   >
                     <ChevronLeft className="w-4 h-4 mr-1" />
-                    Previous
+                    {t("previous")}
                   </Button>
                   <Button
                     size="sm"
@@ -184,7 +160,7 @@ const PortfolioShowcase = () => {
                     onClick={() => navigateProject('next')}
                     className="flex-1 rounded-full"
                   >
-                    Next
+                    {t("next")}
                     <ChevronRight className="w-4 h-4 ml-1" />
                   </Button>
                 </div>
@@ -197,20 +173,20 @@ const PortfolioShowcase = () => {
                     onClick={() => window.open(selectedProject?.demo_url, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Open Full Site
+                    {t("open_full_site")}
                   </Button>
                 )}
 
                 {/* Project Details */}
                 <div className="border-t border-border pt-6">
-                  <h3 className="text-lg font-semibold mb-4">Project Details</h3>
+                  <h3 className="text-lg font-semibold mb-4">{t("project_details")}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {selectedProject?.description}
                   </p>
 
                   {selectedProject?.features && selectedProject.features.length > 0 && (
                     <>
-                      <h4 className="font-semibold mb-3">Key Features</h4>
+                      <h4 className="font-semibold mb-3">{t("key_features")}</h4>
                       <ul className="space-y-2 mb-6">
                         {selectedProject.features.map((feature: string, index: number) => (
                           <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -224,11 +200,11 @@ const PortfolioShowcase = () => {
 
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Category:</span>
+                      <span className="text-muted-foreground">{t("category")}:</span>
                       <span className="font-medium">{selectedProject?.category}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Delivery:</span>
+                      <span className="text-muted-foreground">{t("delivery")}:</span>
                       <span className="font-medium">{selectedProject?.delivery_time}</span>
                     </div>
                   </div>
