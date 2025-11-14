@@ -1,8 +1,31 @@
+# RapidFlow Labs - Robots.txt
+# https://rapidflowlabs.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin pages from search engines
+Disallow: /secret/admin
+Disallow: /#/secret/admin/
+Disallow: /*admin*
+
+# Sitemap location
+Sitemap: https://rapidflowlabs.com/sitemap.xml
+
+# Crawl-delay for all bots (optional, helps reduce server load)
+Crawl-delay: 1
+
+# Specific rules for major search engines
 User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +33,28 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Slurp
 Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# Block problematic bots
+User-agent: AhrefsBot
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Crawl-delay: 2
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
