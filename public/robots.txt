@@ -6,7 +6,6 @@ Allow: /
 
 # Disallow admin pages from search engines
 Disallow: /secret/admin
-Disallow: /#/secret/admin/
 Disallow: /*admin*
 
 # Sitemap location
