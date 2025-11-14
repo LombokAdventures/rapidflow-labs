@@ -55,9 +55,6 @@ const PortfolioShowcase = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            {t("portfolio_title")} <span className="text-gradient">{t("portfolio_build")}</span>
-          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Real projects delivered to real clients. Click to explore interactive demos.
           </p>
@@ -89,10 +86,11 @@ const PortfolioShowcase = () => {
               className="glass-card-hover rounded-3xl overflow-hidden group"
             >
               <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.thumbnail_url}
-                  alt={project.project_name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                <iframe
+                  src={project.demo_url}
+                  title={project.project_name}
+                  className="w-full h-full border-0 pointer-events-none"
+                  sandbox="allow-scripts allow-same-origin"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-3">
                   <Button
