@@ -84,16 +84,39 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(() => {
-    const saved = localStorage.getItem("language");
-    return (saved as Language) || "en";
+    try {
+      const saved = localStorage.getItem("language");
+      console.log("[LanguageProvider] Loading saved language:", saved);
+      const validLanguage = (saved === "en" || saved === "ru" || saved === "uz") ? saved : "en";
+      console.log("[LanguageProvider] Using language:", validLanguage);
+      return validLanguage;
+    } catch (error) {
+      console.error("[LanguageProvider] Error loading language from localStorage:", error);
+      return "en";
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem("language", language);
+    try {
+      console.log("[LanguageProvider] Saving language:", language);
+      localStorage.setItem("language", language);
+    } catch (error) {
+      console.error("[LanguageProvider] Error saving language to localStorage:", error);
+    }
   }, [language]);
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations.en] || key;
+    try {
+      const translation = translations[language][key as keyof typeof translations.en];
+      if (!translation) {
+        console.warn("[LanguageProvider] Missing translation for key:", key, "in language:", language);
+        return key;
+      }
+      return translation;
+    } catch (error) {
+      console.error("[LanguageProvider] Error getting translation for key:", key, error);
+      return key;
+    }
   };
 
   return (

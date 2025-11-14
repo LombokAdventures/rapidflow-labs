@@ -176,10 +176,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Inline script to apply theme immediately and prevent white flash -->
+    <script>
+      (function() {
+        console.log("[PreLoad] Initializing theme before React loads...");
+
+        try {
+          // Get theme from localStorage or use default
+          var savedTheme = localStorage.getItem('theme');
+          var theme = (savedTheme === 'dark' || savedTheme === 'light' || savedTheme === 'purple')
+            ? savedTheme
+            : 'purple';
+
+          console.log("[PreLoad] Applying theme:", theme);
+
+          // Apply theme class to html element immediately
+          document.documentElement.classList.add('theme-' + theme);
+
+          console.log("[PreLoad] Theme applied. Document classes:", document.documentElement.className);
+        } catch (error) {
+          console.error("[PreLoad] Error applying theme:", error);
+          // Fallback to purple theme
+          document.documentElement.classList.add('theme-purple');
+        }
+      })();
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Global error handler -->
+    <script>
+      window.addEventListener('error', function(event) {
+        console.error('[Global Error Handler] Uncaught error:', event.error);
+        console.error('[Global Error Handler] Error message:', event.message);
+        console.error('[Global Error Handler] Source:', event.filename);
+        console.error('[Global Error Handler] Line:', event.lineno, 'Column:', event.colno);
+      });
+
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('[Global Error Handler] Unhandled promise rejection:', event.reason);
+        console.error('[Global Error Handler] Promise:', event.promise);
+      });
+
+      console.log("[Global] RapidFlow Labs - Error handlers initialized");
+    </script>
   </body>
 </html>
