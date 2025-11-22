@@ -36,8 +36,8 @@ const Team = () => {
 
           <div className="grid md:grid-cols-2 gap-10">
             {teamMembers?.map((member, index) => (
-              <div 
-                key={member.id} 
+              <div
+                key={member.id}
                 className="glass-card-hover p-10 rounded-3xl group"
                 style={{ animationDelay: `${index * 100}ms` }}
               >

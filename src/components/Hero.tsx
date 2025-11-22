@@ -70,15 +70,15 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in">
             <div className="glass-card p-8 rounded-2xl hover-lift">
               <div className="text-5xl font-bold text-gradient mb-2">1-3</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Days Delivery</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">{t("stat_days")}</div>
             </div>
             <div className="glass-card p-8 rounded-2xl hover-lift">
               <div className="text-5xl font-bold text-gradient mb-2">100%</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Quality Guarantee</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">{t("stat_quality")}</div>
             </div>
             <div className="glass-card p-8 rounded-2xl hover-lift">
               <div className="text-5xl font-bold text-gradient mb-2">24/7</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Worldwide Service</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">{t("stat_service")}</div>
             </div>
           </div>
         </div>
