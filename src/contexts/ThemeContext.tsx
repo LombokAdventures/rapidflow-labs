@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-type Theme = "dark" | "light" | "purple";
+type Theme = "dark" | "light";
 
 interface ThemeContextType {
   theme: Theme;
@@ -14,12 +14,12 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     try {
       const saved = localStorage.getItem("theme");
       console.log("[ThemeProvider] Loading saved theme:", saved);
-      const validTheme = (saved === "dark" || saved === "light" || saved === "purple") ? saved : "purple";
+      const validTheme = (saved === "dark" || saved === "light") ? saved : "light";
       console.log("[ThemeProvider] Using theme:", validTheme);
       return validTheme;
     } catch (error) {
       console.error("[ThemeProvider] Error loading theme from localStorage:", error);
-      return "purple";
+      return "light";
     }
   });
 
@@ -29,7 +29,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("theme", theme);
 
       // Remove all theme classes first
-      document.documentElement.classList.remove("theme-dark", "theme-light", "theme-purple");
+      document.documentElement.classList.remove("theme-dark", "theme-light");
 
       // Add the current theme class
       document.documentElement.classList.add(`theme-${theme}`);

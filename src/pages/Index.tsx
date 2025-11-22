@@ -23,8 +23,8 @@ const Index = () => {
       <footer className="py-16 border-t border-border/50 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
         <div className="container mx-auto px-4 text-center text-muted-foreground relative z-10">
-          <p className="text-lg">&copy; 2025 WebAgency. All rights reserved.</p>
-          <p className="mt-2">Built with passion for fast, quality web development ⚡</p>
+          <p className="text-lg">&copy; 2025 nextuAI.com. All rights reserved.</p>
+          <p className="mt-2">Your next AI partner - Forward-looking innovation ⚡</p>
         </div>
       </footer>
     </div>
