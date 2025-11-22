@@ -17,6 +17,10 @@ const translations = {
     cta_start: "Start Your AI Journey",
     cta_portfolio: "View Portfolio",
 
+    stat_days: "Days Delivery",
+    stat_quality: "Quality Guarantee",
+    stat_service: "Global Support",
+
     nav_team: "Team",
     nav_services: "Services",
     nav_portfolio: "Portfolio",
@@ -81,6 +85,10 @@ const translations = {
     hero_badge: "Ваш следующий AI-партнёр • Решения для будущего",
     cta_start: "Начать AI Путь",
     cta_portfolio: "Портфолио",
+
+    stat_days: "Дней Доставка",
+    stat_quality: "Гарантия Качества",
+    stat_service: "Глобальная Поддержка",
 
     nav_team: "Команда",
     nav_services: "Услуги",
@@ -147,6 +155,10 @@ const translations = {
     cta_start: "AI Loyihasini Boshlash",
     cta_portfolio: "Portfolio",
 
+    stat_days: "Kunlik Yetkazib Berish",
+    stat_quality: "Sifat Kafolati",
+    stat_service: "Global Qo'llab-quvvatlash",
+
     nav_team: "Jamoa",
     nav_services: "Xizmatlar",
     nav_portfolio: "Portfolio",
@@ -211,6 +223,10 @@ const translations = {
     hero_badge: "Partner AI berikutnya • Solusi siap masa depan",
     cta_start: "Mulai Perjalanan AI",
     cta_portfolio: "Lihat Portofolio",
+
+    stat_days: "Hari Pengiriman",
+    stat_quality: "Jaminan Kualitas",
+    stat_service: "Dukungan Global",
 
     nav_team: "Tim",
     nav_services: "Layanan",
