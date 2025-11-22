@@ -10,15 +10,34 @@ interface LanguageContextType {
 
 const translations = {
   en: {
+    // Hero Section
     hero_title: "We Build Websites in",
     hero_days: "1-3 Days",
     hero_subtitle: "Lightning-fast development, enterprise quality",
+    hero_badge: "Ultra-fast development • World-class quality",
     cta_start: "Start Your Project",
     cta_portfolio: "View Portfolio",
+    // Stats
+    stat_days: "Days Delivery",
+    stat_quality: "Quality Guarantee",
+    stat_service: "Worldwide Service",
+    // Team Section
     team_title: "Meet the",
     team_dream: "Dream Team",
+    team_subtitle: "Expert engineers from top tech companies, united by passion for exceptional web development",
+    why_choose_us: "Why Choose Us?",
+    lightning_fast: "Lightning Fast",
+    lightning_fast_desc: "Deliver complex projects in 1-3 days without compromising on quality or features",
+    expert_quality: "Expert Quality",
+    expert_quality_desc: "Enterprise-level expertise from top American and Korean tech companies",
+    worldwide_service: "Worldwide Service",
+    worldwide_service_desc: "Dedicated support and communication across all timezones",
+    // Services Section
     services_title: "Our",
     services_word: "Services",
+    services_subtitle: "From simple landing pages to complex applications, explore our solutions",
+    select_this: "Select This",
+    // Portfolio Section
     portfolio_title: "See What We",
     portfolio_build: "Actually Build",
     portfolio_subtitle: "Interactive demos of real projects we've delivered",
@@ -33,15 +52,34 @@ const translations = {
     delivery: "Delivery",
   },
   ru: {
+    // Hero Section
     hero_title: "Создаем Сайты за",
     hero_days: "1-3 Дня",
     hero_subtitle: "Молниеносная разработка, корпоративное качество",
+    hero_badge: "Быстрая разработка • Мировой уровень качества",
     cta_start: "Начать Проект",
     cta_portfolio: "Портфолио",
+    // Stats
+    stat_days: "Дней Доставка",
+    stat_quality: "Гарантия Качества",
+    stat_service: "Мировой Сервис",
+    // Team Section
     team_title: "Познакомьтесь с",
     team_dream: "Командой Мечты",
+    team_subtitle: "Эксперты из ведущих IT компаний, объединённые страстью к веб-разработке",
+    why_choose_us: "Почему Мы?",
+    lightning_fast: "Молниеносная Скорость",
+    lightning_fast_desc: "Сложные проекты за 1-3 дня без компромиссов в качестве",
+    expert_quality: "Экспертное Качество",
+    expert_quality_desc: "Уровень лучших американских и корейских IT компаний",
+    worldwide_service: "Мировой Сервис",
+    worldwide_service_desc: "Поддержка и коммуникация во всех часовых поясах",
+    // Services Section
     services_title: "Наши",
     services_word: "Услуги",
+    services_subtitle: "От простых лендингов до сложных приложений — изучите наши решения",
+    select_this: "Выбрать",
+    // Portfolio Section
     portfolio_title: "Посмотрите Что Мы",
     portfolio_build: "Реально Создаем",
     portfolio_subtitle: "Интерактивные демо реальных проектов, которые мы создали",
@@ -56,15 +94,34 @@ const translations = {
     delivery: "Доставка",
   },
   uz: {
-    hero_title: "1-3 Kunda Veb-sayt",
-    hero_days: "Yaratamiz",
+    // Hero Section
+    hero_title: "Veb-saytlarni",
+    hero_days: "1-3 Kunda Yaratamiz",
     hero_subtitle: "Tezkor ishlab chiqish, yuqori sifat",
-    cta_start: "Boshlash",
+    hero_badge: "Tezkor ishlab chiqish • Jahon sifati",
+    cta_start: "Loyihani Boshlash",
     cta_portfolio: "Portfolio",
+    // Stats
+    stat_days: "Kunlik Yetkazib Berish",
+    stat_quality: "Sifat Kafolati",
+    stat_service: "Jahon Xizmati",
+    // Team Section
     team_title: "Bizning",
     team_dream: "Orzular Jamoasi",
+    team_subtitle: "Yetakchi IT kompaniyalardan mutaxassislar, veb-dasturlash ishtiyoqi bilan birlashgan",
+    why_choose_us: "Nega Biz?",
+    lightning_fast: "Chaqmoq Tezligi",
+    lightning_fast_desc: "Murakkab loyihalarni 1-3 kunda sifatni yo'qotmasdan yaratamiz",
+    expert_quality: "Ekspert Sifati",
+    expert_quality_desc: "Amerika va Koreya IT kompaniyalari darajasida",
+    worldwide_service: "Jahon Xizmati",
+    worldwide_service_desc: "Barcha vaqt zonalarida qo'llab-quvvatlash va aloqa",
+    // Services Section
     services_title: "Bizning",
     services_word: "Xizmatlar",
+    services_subtitle: "Oddiy sahifalardan murakkab ilovalargacha — yechimlarimizni ko'ring",
+    select_this: "Tanlash",
+    // Portfolio Section
     portfolio_title: "Biz Nima",
     portfolio_build: "Yaratamiz",
     portfolio_subtitle: "Biz yaratgan haqiqiy loyihalarning interaktiv demolari",
