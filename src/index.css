@@ -2,125 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* nextuAI Design System - Professional AI-focused aesthetic */
 
 @layer base {
-  /* Purple Theme (Default - Electric Purple/Cyan) */
+  /* Light Theme (Default - Clean, Professional) */
   :root,
-  .theme-purple {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 15%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 250 80% 70%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 188 94% 60%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 188 94% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 250 80% 70%;
-
-    --radius: 1rem;
-
-    /* Modern gradient colors - Purple to Blue */
-    --gradient-from: 250 80% 70%;
-    --gradient-via: 260 70% 65%;
-    --gradient-to: 270 60% 60%;
-
-    /* Hero gradient - Electric Purple to Blue */
-    --hero-gradient-from: 250 80% 70%;
-    --hero-gradient-to: 270 60% 60%;
-
-    /* Accent gradient - Cyan glow */
-    --accent-glow-from: 188 94% 60%;
-    --accent-glow-to: 188 100% 70%;
-
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 250 80% 70%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 250 80% 70%;
-  }
-
-  /* Dark Theme (Modern Dark with Blue/Teal accents) */
-  .theme-dark {
-    --background: 220 26% 14%;
-    --foreground: 210 40% 98%;
-
-    --card: 220 26% 14%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 220 26% 18%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 173 80% 40%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 215 28% 17%;
-    --muted-foreground: 217 19% 60%;
-
-    --accent: 173 80% 40%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 215 28% 22%;
-    --input: 215 28% 22%;
-    --ring: 199 89% 48%;
-
-    --radius: 1rem;
-
-    /* Modern gradient colors - Blue to Teal */
-    --gradient-from: 199 89% 48%;
-    --gradient-via: 186 85% 44%;
-    --gradient-to: 173 80% 40%;
-
-    /* Hero gradient - Ocean Blue */
-    --hero-gradient-from: 199 89% 48%;
-    --hero-gradient-to: 173 80% 40%;
-
-    /* Accent gradient - Teal glow */
-    --accent-glow-from: 173 80% 40%;
-    --accent-glow-to: 173 90% 50%;
-
-    --sidebar-background: 220 26% 14%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 89% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 215 28% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 215 28% 22%;
-    --sidebar-ring: 199 89% 48%;
-  }
-
-  /* Light Theme (Clean White with vibrant accents) */
   .theme-light {
-    --background: 0 0% 100%;
+    --background: 240 20% 99%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -129,16 +17,16 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 250 80% 60%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 188 94% 50%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 215 20% 40%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 188 94% 50%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -146,31 +34,86 @@ All colors MUST be HSL.
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 250 80% 60%;
+    --ring: 221 83% 53%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    /* Modern gradient colors - Purple to Blue (vibrant) */
-    --gradient-from: 250 80% 60%;
-    --gradient-via: 260 70% 55%;
-    --gradient-to: 270 60% 50%;
+    /* Professional gradient - Subtle blue tones */
+    --gradient-from: 221 83% 53%;
+    --gradient-via: 217 91% 60%;
+    --gradient-to: 199 89% 48%;
 
-    /* Hero gradient - Vibrant Purple */
-    --hero-gradient-from: 250 80% 60%;
-    --hero-gradient-to: 270 60% 50%;
+    /* Hero gradient - Clean and modern */
+    --hero-gradient-from: 221 83% 53%;
+    --hero-gradient-to: 199 89% 48%;
 
-    /* Accent gradient - Bright Cyan */
-    --accent-glow-from: 188 94% 50%;
-    --accent-glow-to: 188 100% 60%;
+    /* Accent gradient */
+    --accent-glow-from: 217 91% 60%;
+    --accent-glow-to: 199 89% 48%;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 250 80% 60%;
+    --sidebar-primary: 221 83% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 210 40% 96%;
     --sidebar-accent-foreground: 222 47% 11%;
     --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 250 80% 60%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  /* Dark Theme (Professional Dark with Blue accents) */
+  .theme-dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Professional gradient - Blue tones */
+    --gradient-from: 217 91% 60%;
+    --gradient-via: 199 89% 48%;
+    --gradient-to: 199 89% 48%;
+
+    /* Hero gradient - Deep blue */
+    --hero-gradient-from: 217 91% 60%;
+    --hero-gradient-to: 199 89% 48%;
+
+    /* Accent gradient */
+    --accent-glow-from: 199 89% 48%;
+    --accent-glow-to: 217 91% 60%;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 20%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -210,11 +153,11 @@ All colors MUST be HSL.
   }
 
   .glass-card {
-    @apply backdrop-blur-xl bg-card/40 border border-white/10 shadow-2xl shadow-primary/5;
+    @apply backdrop-blur-xl bg-card/40 border border-border/50 shadow-lg;
   }
 
   .glass-card-hover {
-    @apply glass-card hover:bg-card/60 hover:border-primary/30 hover:shadow-primary/20 transition-all duration-300;
+    @apply glass-card hover:bg-card/60 hover:border-primary/30 hover:shadow-xl transition-all duration-300;
   }
 
   .glow-primary {

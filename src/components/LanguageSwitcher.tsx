@@ -11,12 +11,12 @@ const LanguageSwitcher = () => {
     { code: "en", label: "EN", name: "English", flag: "🇬🇧" },
     { code: "ru", label: "РУ", name: "Русский", flag: "🇷🇺" },
     { code: "uz", label: "UZ", name: "O'zbek", flag: "🇺🇿" },
+    { code: "id", label: "ID", name: "Indonesian", flag: "🇮🇩" },
   ];
 
   const themes = [
-    { code: "purple", icon: Sparkles, name: "Purple", gradient: "from-purple-500 to-cyan-500" },
-    { code: "dark", icon: Moon, name: "Dark", gradient: "from-blue-500 to-teal-500" },
-    { code: "light", icon: Sun, name: "Light", gradient: "from-purple-400 to-blue-400" },
+    { code: "light", icon: Sun, name: "Light", gradient: "from-blue-400 to-cyan-400" },
+    { code: "dark", icon: Moon, name: "Dark", gradient: "from-blue-600 to-indigo-600" },
   ];
 
   return (

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-type Language = "en" | "ru" | "uz";
+type Language = "en" | "ru" | "uz" | "id";
 
 interface LanguageContextType {
   language: Language;
@@ -10,18 +10,18 @@ interface LanguageContextType {
 
 const translations = {
   en: {
-    hero_title: "We Build Websites in",
-    hero_days: "1-3 Days",
-    hero_subtitle: "Lightning-fast development, enterprise quality",
-    cta_start: "Start Your Project",
+    hero_title: "AI-Powered Solutions in",
+    hero_days: "Record Time",
+    hero_subtitle: "Next-generation AI development for forward-thinking enterprises",
+    cta_start: "Start Your AI Journey",
     cta_portfolio: "View Portfolio",
-    team_title: "Meet the",
-    team_dream: "Dream Team",
+    team_title: "Meet Our",
+    team_dream: "AI Experts",
     services_title: "Our",
     services_word: "Services",
     portfolio_title: "See What We",
     portfolio_build: "Actually Build",
-    portfolio_subtitle: "Interactive demos of real projects we've delivered",
+    portfolio_subtitle: "Real AI solutions deployed for global clients",
     view_demo: "View Demo",
     open: "Open",
     previous: "Previous",
@@ -33,18 +33,18 @@ const translations = {
     delivery: "Delivery",
   },
   ru: {
-    hero_title: "Создаем Сайты за",
-    hero_days: "1-3 Дня",
-    hero_subtitle: "Молниеносная разработка, корпоративное качество",
-    cta_start: "Начать Проект",
+    hero_title: "AI-Решения За",
+    hero_days: "Рекордное Время",
+    hero_subtitle: "ИИ-разработка нового поколения для передовых предприятий",
+    cta_start: "Начать AI Проект",
     cta_portfolio: "Портфолио",
     team_title: "Познакомьтесь с",
-    team_dream: "Командой Мечты",
+    team_dream: "Экспертами AI",
     services_title: "Наши",
     services_word: "Услуги",
     portfolio_title: "Посмотрите Что Мы",
     portfolio_build: "Реально Создаем",
-    portfolio_subtitle: "Интерактивные демо реальных проектов, которые мы создали",
+    portfolio_subtitle: "Реальные AI решения для глобальных клиентов",
     view_demo: "Смотреть Демо",
     open: "Открыть",
     previous: "Назад",
@@ -56,18 +56,18 @@ const translations = {
     delivery: "Доставка",
   },
   uz: {
-    hero_title: "1-3 Kunda Veb-sayt",
-    hero_days: "Yaratamiz",
-    hero_subtitle: "Tezkor ishlab chiqish, yuqori sifat",
-    cta_start: "Boshlash",
+    hero_title: "AI Yechimlari",
+    hero_days: "Rekord Vaqtda",
+    hero_subtitle: "Ilg'or korxonalar uchun yangi avlod AI ishlab chiqish",
+    cta_start: "AI Loyihasini Boshlash",
     cta_portfolio: "Portfolio",
     team_title: "Bizning",
-    team_dream: "Orzular Jamoasi",
+    team_dream: "AI Mutaxassislar",
     services_title: "Bizning",
     services_word: "Xizmatlar",
     portfolio_title: "Biz Nima",
     portfolio_build: "Yaratamiz",
-    portfolio_subtitle: "Biz yaratgan haqiqiy loyihalarning interaktiv demolari",
+    portfolio_subtitle: "Global mijozlar uchun haqiqiy AI yechimlari",
     view_demo: "Demoni Ko'rish",
     open: "Ochish",
     previous: "Oldingi",
@@ -78,6 +78,29 @@ const translations = {
     category: "Kategoriya",
     delivery: "Yetkazib berish",
   },
+  id: {
+    hero_title: "Solusi AI dalam",
+    hero_days: "Waktu Singkat",
+    hero_subtitle: "Pengembangan AI generasi berikutnya untuk perusahaan visioner",
+    cta_start: "Mulai Perjalanan AI",
+    cta_portfolio: "Lihat Portfolio",
+    team_title: "Temui",
+    team_dream: "Ahli AI Kami",
+    services_title: "Layanan",
+    services_word: "Kami",
+    portfolio_title: "Lihat Apa Yang",
+    portfolio_build: "Kami Bangun",
+    portfolio_subtitle: "Solusi AI nyata untuk klien global",
+    view_demo: "Lihat Demo",
+    open: "Buka",
+    previous: "Sebelumnya",
+    next: "Selanjutnya",
+    open_full_site: "Buka Situs Lengkap",
+    project_details: "Detail Proyek",
+    key_features: "Fitur Utama",
+    category: "Kategori",
+    delivery: "Pengiriman",
+  },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -87,7 +110,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     try {
       const saved = localStorage.getItem("language");
       console.log("[LanguageProvider] Loading saved language:", saved);
-      const validLanguage = (saved === "en" || saved === "ru" || saved === "uz") ? saved : "en";
+      const validLanguage = (saved === "en" || saved === "ru" || saved === "uz" || saved === "id") ? saved : "en";
       console.log("[LanguageProvider] Using language:", validLanguage);
       return validLanguage;
     } catch (error) {

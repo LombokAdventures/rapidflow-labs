@@ -36,9 +36,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-xl">W</span>
+              <span className="text-white font-bold text-xl">N</span>
             </div>
-            <span className="font-bold text-xl">WebAgency</span>
+            <span className="font-bold text-xl">nextu<span className="text-gradient">AI</span></span>
           </div>
 
           {/* Desktop Navigation */}
