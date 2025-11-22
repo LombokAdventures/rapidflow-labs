@@ -30,7 +30,7 @@ const Team = () => {
               {t("team_title")} <span className="text-gradient">{t("team_dream")}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Expert engineers from top tech companies, united by passion for exceptional web development
+              {t("team_subtitle")}
             </p>
           </div>
 
@@ -101,33 +101,33 @@ const Team = () => {
 
           {/* Why Choose Us */}
           <div className="mt-24 text-center">
-            <h3 className="text-4xl font-bold mb-12">Why Choose Us?</h3>
+            <h3 className="text-4xl font-bold mb-12">{t("why_title")}</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="glass-card p-8 rounded-2xl hover-lift">
                 <div className="w-20 h-20 mx-auto rounded-2xl gradient-primary flex items-center justify-center mb-6 glow-primary">
-                  <span className="text-4xl">⚡</span>
+                  <span className="text-4xl">🧠</span>
                 </div>
-                <h4 className="text-2xl font-semibold mb-4">Lightning Fast</h4>
+                <h4 className="text-2xl font-semibold mb-4">{t("why_fast_title")}</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  Deliver complex projects in 1-3 days without compromising on quality or features
+                  {t("why_fast_desc")}
                 </p>
               </div>
               <div className="glass-card p-8 rounded-2xl hover-lift">
                 <div className="w-20 h-20 mx-auto rounded-2xl gradient-primary flex items-center justify-center mb-6 glow-primary">
-                  <span className="text-4xl">🎯</span>
+                  <span className="text-4xl">🏗️</span>
                 </div>
-                <h4 className="text-2xl font-semibold mb-4">Expert Quality</h4>
+                <h4 className="text-2xl font-semibold mb-4">{t("why_quality_title")}</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  Enterprise-level expertise from top American and Korean tech companies
+                  {t("why_quality_desc")}
                 </p>
               </div>
               <div className="glass-card p-8 rounded-2xl hover-lift">
                 <div className="w-20 h-20 mx-auto rounded-2xl gradient-primary flex items-center justify-center mb-6 glow-primary">
                   <span className="text-4xl">🌍</span>
                 </div>
-                <h4 className="text-2xl font-semibold mb-4">Worldwide Service</h4>
+                <h4 className="text-2xl font-semibold mb-4">{t("why_global_title")}</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  Dedicated support and communication across all timezones
+                  {t("why_global_desc")}
                 </p>
               </div>
             </div>

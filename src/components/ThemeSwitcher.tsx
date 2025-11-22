@@ -7,22 +7,16 @@ const ThemeSwitcher = () => {
 
   const themes = [
     {
-      code: "purple",
-      icon: Sparkles,
-      name: "Purple",
-      gradient: "from-purple-500 to-cyan-500"
+      code: "light",
+      icon: Sun,
+      name: "Light",
+      gradient: "from-blue-400 to-cyan-400",
     },
     {
       code: "dark",
       icon: Moon,
       name: "Dark",
-      gradient: "from-blue-500 to-teal-500"
-    },
-    {
-      code: "light",
-      icon: Sun,
-      name: "Light",
-      gradient: "from-purple-400 to-blue-400"
+      gradient: "from-blue-700 to-indigo-700",
     },
   ];
 
