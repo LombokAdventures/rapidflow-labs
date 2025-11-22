@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const reviewSchema = z.object({
   reviewer_name: z.string().min(2, "Name must be at least 2 characters"),
@@ -22,6 +23,7 @@ const reviewSchema = z.object({
 });
 
 const Reviews = () => {
+  const { t } = useLanguage();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [rating, setRating] = useState(5);
   const [formData, setFormData] = useState({
@@ -94,13 +96,13 @@ const Reviews = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client <span className="text-gradient">Reviews</span>
+            {t("reviews_title")} <span className="text-gradient">{t("reviews_accent")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            See what our clients say about working with us
+            {t("reviews_subtitle")}
           </p>
           <Button onClick={() => setIsDialogOpen(true)} className="gradient-primary">
-            Leave a Review
+            {t("reviews_cta")}
           </Button>
         </div>
 

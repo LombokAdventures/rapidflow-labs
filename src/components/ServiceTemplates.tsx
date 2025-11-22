@@ -62,7 +62,7 @@ const ServiceTemplates = () => {
                   {service.description}
                 </p>
                 <Button variant="ghost" className="text-primary hover:text-primary/80 p-0 h-auto group-hover:translate-x-2 transition-transform">
-                  {t("select_this")} →
+                  {t("services_select")}
                 </Button>
               </div>
             );
