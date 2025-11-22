@@ -35,7 +35,7 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-4 animate-fade-in">
             <Sparkles className="w-4 h-4 text-primary" />
-            <span>Ultra-fast development • World-class quality</span>
+            <span>{t("hero_badge")}</span>
           </div>
 
           <div className="space-y-6 animate-fade-in">

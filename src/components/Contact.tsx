@@ -3,10 +3,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, Phone } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
 import {
   Select,
   SelectContent,
@@ -14,6 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const contactSchema = z.object({
   full_name: z.string().min(2, "Name must be at least 2 characters").max(100),
@@ -25,8 +26,9 @@ const contactSchema = z.object({
   timeline: z.string().min(1, "Please select a timeline"),
   budget_range: z.string().optional(),
 });
-
+ 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -126,10 +128,10 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="text-gradient">Touch</span>
+            {t("contact_title")} <span className="text-gradient">{t("contact_accent")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your project? Contact us and let's build something amazing together
+            {t("contact_subtitle")}
           </p>
         </div>
 

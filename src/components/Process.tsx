@@ -1,26 +1,29 @@
 import { MessageSquare, Lightbulb, Code, Rocket } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Process = () => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       icon: MessageSquare,
-      title: "Consultation",
-      description: "Tell us what you need and we'll understand your vision",
+      title: t("process_step1_title"),
+      description: t("process_step1_desc"),
     },
     {
       icon: Lightbulb,
-      title: "Planning",
-      description: "We design your solution and plan the implementation",
+      title: t("process_step2_title"),
+      description: t("process_step2_desc"),
     },
     {
       icon: Code,
-      title: "Development",
-      description: "Rapid 1-3 day build with continuous communication",
+      title: t("process_step3_title"),
+      description: t("process_step3_desc"),
     },
     {
       icon: Rocket,
-      title: "Delivery",
-      description: "Launch-ready website delivered on time",
+      title: t("process_step4_title"),
+      description: t("process_step4_desc"),
     },
   ];
 
@@ -29,10 +32,10 @@ const Process = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            How It <span className="text-gradient">Works</span>
+            {t("process_title")} <span className="text-gradient">{t("process_accent")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our streamlined process ensures fast delivery without compromising quality
+            {t("process_subtitle")}
           </p>
         </div>
 

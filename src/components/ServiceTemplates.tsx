@@ -39,7 +39,7 @@ const ServiceTemplates = () => {
             {t("services_title")} <span className="text-gradient">{t("services_word")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From simple landing pages to complex applications, explore our solutions
+            {t("services_subtitle")}
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const ServiceTemplates = () => {
                   {service.description}
                 </p>
                 <Button variant="ghost" className="text-primary hover:text-primary/80 p-0 h-auto group-hover:translate-x-2 transition-transform">
-                  Select This →
+                  {t("services_select")}
                 </Button>
               </div>
             );
