@@ -29,7 +29,7 @@ const translations = {
     nav_cta: "Get Started",
 
     team_title: "Meet Our",
-    team_dream: "AI Experts",
+    team_dream: "Innovation Team",
     team_subtitle: "Applied AI researchers and software architects turning cutting-edge research into production systems",
     why_title: "Why Choose Us?",
     why_fast_title: "Research-Driven AI",
@@ -98,7 +98,7 @@ const translations = {
     nav_cta: "Начать",
 
     team_title: "Познакомьтесь с",
-    team_dream: "Экспертами AI",
+    team_dream: "Командой Инноваций",
     team_subtitle: "Исследователи и архитекторы, превращающие передовые разработки в продакшн-системы.",
     why_title: "Почему Мы?",
     why_fast_title: "Исследовательский AI",
@@ -167,7 +167,7 @@ const translations = {
     nav_cta: "Boshlash",
 
     team_title: "Bizning",
-    team_dream: "AI Mutaxassislar",
+    team_dream: "Innovatsion Jamoamiz",
     team_subtitle: "Eng soʻnggi tadqiqotlarni ishlab chiqarish tizimlariga aylantiradigan tadqiqotchilar va arxitektorlar.",
     why_title: "Nega Aynan Biz?",
     why_fast_title: "Tadqiqotga Asoslangan AI",
@@ -236,7 +236,7 @@ const translations = {
     nav_cta: "Mulai Sekarang",
 
     team_title: "Temui",
-    team_dream: "Ahli AI Kami",
+    team_dream: "Tim Inovasi Kami",
     team_subtitle: "Peneliti dan arsitek yang mengubah riset mutakhir menjadi sistem produksi.",
     why_title: "Mengapa nextuAI?",
     why_fast_title: "AI Berbasis Riset",
