@@ -111,12 +111,12 @@ const Reviews = () => {
             <div key={review.id} className="glass-card p-8 rounded-2xl space-y-4">
               <div className="flex gap-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
+                <Star
                     key={i}
                     className={`w-5 h-5 ${
                       i < review.rating
-                        ? "fill-secondary text-secondary"
-                        : "text-muted"
+                        ? "fill-primary text-primary"
+                        : "text-muted-foreground/30"
                     }`}
                   />
                 ))}
@@ -153,8 +153,8 @@ const Reviews = () => {
                       <Star
                         className={`w-8 h-8 cursor-pointer ${
                           i < rating
-                            ? "fill-secondary text-secondary"
-                            : "text-muted"
+                            ? "fill-primary text-primary"
+                            : "text-muted-foreground/30"
                         }`}
                       />
                     </button>
